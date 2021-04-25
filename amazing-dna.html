@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Updates: 8th of January 2021: This article has been revised and updated, scientifically and in terms of dead links. Revision made by Tomás Simões (@putadagravidade / tomasprsimoes@gmail.com). Feel free to contact me if I made a mistake.
+25th of August 2017: This page has led to a two-hour presentation called DNA: The code of Life as presented at SHA 2017. Includes slides and video and a summarizing blogpost. If you like this page, you&rsquo;ll love the presentation.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='DNA seen through the eyes of a coder (or,  If you are a hammer, everything looks like a nail) - Articles'>
+<meta property='og:description' content='Updates: 8th of January 2021: This article has been revised and updated, scientifically and in terms of dead links. Revision made by Tomás Simões (@putadagravidade / tomasprsimoes@gmail.com). Feel free to contact me if I made a mistake.
+25th of August 2017: This page has led to a two-hour presentation called DNA: The code of Life as presented at SHA 2017. Includes slides and video and a summarizing blogpost. If you like this page, you&rsquo;ll love the presentation.'>
+<meta property='og:url' content='https://berthub.eu/articles/posts/amazing-dna/'>
+<meta property='og:site_name' content='Articles'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:published_time' content='2021-01-09T13:33:46Z'/><meta property='article:modified_time' content='2021-01-09T13:33:46Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.82.0" />
+
+  <title>DNA seen through the eyes of a coder (or,  If you are a hammer, everything looks like a nail) - Articles</title>
+  <link rel='canonical' href='https://berthub.eu/articles/posts/amazing-dna/'>
+  
+  
+  <link rel='icon' href='/articles/favicon.ico'>
+<link rel='stylesheet' href='/articles/assets/css/main.ab98e12b.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/articles/'>
+        <img src='/articles/logo3.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/articles/'>
+       
+      </a>
+    </h2>
+    <div class='desc'>
+    Also see: <a href="https://berthub.eu/">berthub.eu</a>
+    </div>
+  </header>
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+
+</svg>
+</span>
+  <span class='close'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/MunifTanjim/minimo'></a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Articles</p><p class='desc site-desc'>by bert hubert / bert@hubertnet.nl</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>DNA seen through the eyes of a coder (or,  If you are a hammer, everything looks like a nail)</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2021-01-09T13:33:46Z'>Jan 09 2021</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+
+</svg>
+22 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <blockquote>
+<p><strong>Updates:</strong>
+8th of January 2021:
+This article has been revised and updated, scientifically and in terms of dead links. Revision made by Tomás Simões (<a href="https://twitter.com/putadagravidade">@putadagravidade</a> / <a href="mailto:tomasprsimoes@gmail.com">tomasprsimoes@gmail.com</a>). Feel free to contact me if I made a mistake.</p>
+<p>25th of August 2017:
+This page has led to a two-hour presentation called <a href="https://berthub.eu/dna/">DNA: The code of Life</a> as presented at <a href="https://sha2017.org/">SHA 2017</a>. Includes slides and video and a <a href="https://berthub.eu/articles/posts/dna-the-code-of-life/">summarizing blogpost</a>. If you like this page, you&rsquo;ll love the presentation.</p>
+</blockquote>
+<p>This is some rambling by a computer programmer about DNA. I&rsquo;m not a molecular geneticist
+(Update: 20 years after starting this post, I can fake it reasonably well.
+This page was started somewhere in 2001, and it may need some more updating
+here and there. Since 2001 I&rsquo;ve learned a few things and I think I need to
+revisit some parts of this page.)</p>
+<p>If you spot mistakes, please contact me (<a href="https://twitter.com/PowerDNS_Bert">@PowerDNS_Bert</a> / <a href="mailto:bert@hubertnet.nl">bert@hubertnet.nl</a>).</p>
+<p>I&rsquo;m not trying to force my view unto the DNA - each observation here is quite &lsquo;uncramped&rsquo;. To see where I got all this from, head to the Bibliography (end of the page).</p>
+<h2 id="the-source-code">The source code</h2>
+<p>Is <a href="ftp://ftp.ensembl.org/pub/current_genbank/homo_sapiens/">here</a>. This not a joke. We can wonder about the license though. Maybe we should ask the walking product of this source: <a href="https://www.theguardian.com/world/2002/apr/28/medicalscience.research">Craig Venter</a> (update: not quite true, it is mostly someone else). The source can be viewed via a wonderful set of perl scripts called <a href="http://www.ensembl.org/index.html">&lsquo;Ensembl&rsquo;</a>. The human genome is about 3 gigabases long, which boils down to 750 megabytes. Depressingly enough, this is only 3.6 (update: used to be 2.8, apparently Firefox decreased in size, huh.) Mozilla browsers.</p>
+<p>DNA is not like C source but more like byte-compiled code for a virtual machine called &lsquo;the nucleus&rsquo;. It is very doubtful that there is a source to this byte compilation - what you see is all you get.</p>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/dna.jpg"
+         alt="Illustration of a DNA molecule."/> <figcaption>
+            <p>Illustration of a DNA molecule.</p>
+        </figcaption>
+</figure>
+
+</center>
+<p>The language of DNA is digital, but not binary. Where binary encoding has 0 and 1 to work with (2 - hence the &lsquo;bi&rsquo;nary), DNA has 4 positions, T, C, G and A.</p>
+<p>Whereas a digital byte is mostly 8 binary digits, a DNA &lsquo;byte&rsquo; (called a &lsquo;codon&rsquo;) has three digits. Because each digit can have 4 values instead of 2, a DNA codon has 64 possible values, compared to a binary byte which has 256.</p>
+<p>A typical example of a DNA codon is &lsquo;GCC&rsquo;, which encodes the amino acid Alanine. A larger number of these amino acids combined are called a &lsquo;polypeptide&rsquo; or &lsquo;protein&rsquo;, and these are chemically active in making a living being.</p>
+<p>See also <a href="https://www.nature.com/scitable/definition/codon-155/">https://www.nature.com/scitable/definition/codon-155/</a></p>
+<h2 id="position-independent-code">Position Independent Code</h2>
+<p><em>Dynamically linked libraries (.so under Unix, .dll on Windows) code cannot use static addresses internally because the code may appear in different places in memory in different situations. DNA has this too, where it is called &lsquo;transposing code&rsquo;:</em></p>
+<p>Nearly half of the human genome is composed of transposable elements or jumping DNA. First recognized in the 1940s by Dr. Barbara McClintock in studies of peculiar inheritance patterns found in the colors of Indian corn, jumping DNA refers to the idea that some stretches of DNA are unstable and &ldquo;transposable,&rdquo; ie., they can move around &ndash; on and between chromosomes.</p>
+<p><a href="https://www.nature.com/scitable/topicpage/transposons-the-jumping-genes-518/">https://www.nature.com/scitable/topicpage/transposons-the-jumping-genes-518/</a></p>
+<h2 id="conditional-compilation">Conditional compilation</h2>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/human_chrom.gif"
+         alt="Illustration of human chromosomes."/> <figcaption>
+            <p>Illustration of human chromosomes.</p>
+        </figcaption>
+</figure>
+
+</center>
+<p>Of the 20,000 to 30,000 genes now thought to be in the human genome (update: <strong>quite</strong> <a href="https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-018-0564-x#Sec5">debatable</a>), most cells express only a very small part - which makes sense, a liver cell has little need for the DNA code that makes neurons.</p>
+<p>But as almost all cells carry around a full copy (&lsquo;distribution&rsquo;) of the genome, a system is needed to #ifdef out stuff not needed. And that is just how it works. The genetic code is full of #if/#endif statements.</p>
+<p>This is why &lsquo;<a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/research/breakthroughs-in-stem-cell-research">stem cells</a>&rsquo; are so hot right now - these cells have the ability to differentiate into everything. The code hasn&rsquo;t been #ifdeffed out yet, so to speak.</p>
+<p>Stated more exactly, stem cells do not have everything turned on - they are not at once liver cells and neurons. Cells can be likened to state machines, starting out as a stem cell. Over the lifetime of the cell, during which time it may clone (&lsquo;fork()') many times, it specializes. Each specialization can be regarded as choosing a branch in a tree.</p>
+<p>Each cell can make (or be induced to make) decisions about its future, which each make it more specialized. These decisions are persistent over cloning using transcription factors and by modifying the way DNA is stored spatially (&lsquo;steric effects&rsquo;).</p>
+<p>A liver cell, although it carries the genes to do so, will generally not be able to function as a skin cell. There are some indications out there that it is possible to &lsquo;breed&rsquo; cells &lsquo;upwards&rsquo; into the hierarchy, making them pluripotent. See also <a href="https://www.sciencedaily.com/releases/2002/01/020131074645.htm">this article</a>.</p>
+<h2 id="epigenetics--imprinting-runtime-binary-patching">Epigenetics &amp; imprinting: runtime binary patching</h2>
+<p>Although the actual relevant changes in the DNA of an organism rarely occur within a generation, substantial tinkering goes on by activating or deactivating parts of our genome, without altering the actual code.</p>
+<p>This can be compared to the Linux kernel, which at boot time discovers what CPU it is running on, and actually disables parts of its binary code in case (for example) it is running on a single CPU system. This goes beyond something like if(numcpus &gt; 1), it is the actual nopping out of locking. Crucially, this nopping occurs in memory and not on the disk based image.</p>
+<p>Similarly, as an embryo develops in the mother&rsquo;s womb, its DNA is edited substantially to reduce its growth rate, and the size of the placenta. In such a way, the competing interests of the father (&lsquo;large strong children&rsquo;) and the mother (&lsquo;survive pregnancy&rsquo;) are balanced. Such &lsquo;imprinting&rsquo; can only happen within the mother, since the father&rsquo;s genome doesn&rsquo;t know anything about the size of the mother.</p>
+<p>Recently, it is also becoming clear that the metabolic status of the parents influences the <a href="https://en.wikipedia.org/wiki/Transgenerational_epigenetic_inheritance">chances of long life, cancer and diabetes in their grandchildren</a>. This also makes sense, as surviving in a food poor climate may require a different metabolic strategy than in one where food is abundantly available.</p>
+<p>Mechanisms behind epigenetics and imprinting are &lsquo;methylation&rsquo;, which attaches methyl groups to DNA to &lsquo;flip&rsquo; their activation status, but also histone modification, which can curl up DNA so it is not activated.</p>
+<p>Some of these DNA edits are heritable and passed on to children, other forms may only impact one animal.</p>
+<p>This field is still developing rapidly, and it may be that our DNA is much more dynamic than originally thought.</p>
+<h2 id="dead-code-bloat-comments-junk-dna">Dead code, bloat, comments (&lsquo;Junk DNA&rsquo;)</h2>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/intron.gif"
+         alt="From genes to proteins."/> <figcaption>
+            <p>From genes to proteins.</p>
+        </figcaption>
+</figure>
+
+</center>
+<p>The genome is littered with old copies of genes and experiments that went wrong somewhere in the recent past - say, the last half a million years. This code is there but inactive. These are called the &lsquo;pseudo genes&rsquo;.</p>
+<p>Furthermore, 97% of your DNA is commented out. DNA is linear and read from start to end. The parts that should not be decoded are marked very clearly, much like C comments. The 3% that is used directly form the so called &lsquo;exons&rsquo;. The comments, that come &lsquo;in-between&rsquo; are called &lsquo;introns&rsquo;.</p>
+<p>These comments are fascinating in their own right. Like C comments they have a start marker, like /*, and a stop marker, like */. But they have some more structure. Remember that DNA is like a tape - the comments need to be snipped out physically! The start of a comment is almost always indicated by the letters &lsquo;GT&rsquo;, which thus corresponds to /*, the end is signaled by &lsquo;AG&rsquo;, which is then like */.</p>
+<p>However because of the snipping, some glue is needed to connect the code before the comment to the code after, which makes the comments more like html comments, which are longer: &lsquo;&lt;!&ndash;&rsquo; signifies the start, &lsquo;&ndash;&gt;&rsquo; the end.</p>
+<p>So an actual stretch of DNA with exons and introns might look like this:</p>
+<pre><code>ACTUAL CODE&lt;!-- blah blah blah blah ---- blah --&gt;ACTUAL CODE
+  |         |            |           |        |        |
+exon 1    donor       intron 1     branch  acceptor  exon 2
+     (start of comment)                 (end of comment)
+</code></pre><p>The start of the comment is clear, which is then followed by a lot of non-coding DNA. Somewhere very near the end of the comment there is a &lsquo;branch site&rsquo;, which indicates that the comment will end soon. Then some more comment follows, and then the actual terminator.</p>
+<p>The actual cutting of the comments happens after the DNA has been transcribed into RNA and is performed by looping the comment and bringing the pieces of actual code close together. Then the RNA is cut at the &lsquo;branch site&rsquo; near the end of the comment, after which the &lsquo;donor&rsquo; (comment start) and &lsquo;acceptor&rsquo; (comment end) are connected to each other.</p>
+<p>Now, what are these comments good for? That discussion is part of a holy war that can rival the <a href="https://xkcd.com/378/">vi/emacs one</a>. When comparing different species, we know that some introns show fewer code changes than the neighboring exons. This suggests that the comments are doing something important.</p>
+<p>There are lots of possible explanations for the massive amount of non-coding DNA - one of the most appealing (to a coder) has to do with &lsquo;folding propensity&rsquo;. DNA needs to be stored in a highly coiled form, but not all DNA codes lend themselves well to this.</p>
+<p>This may remind you of <a href="https://www.redhill.net.au/d/10.php">RLL or MFM</a> coding. On a hard disk, a bit is encoded by a polarity transition or the lack thereof. A naive encoding would encode a 0 as &lsquo;no transition&rsquo; and 1 as &lsquo;a transition&rsquo;.</p>
+<p>Encoding 000000 is easy - just keep the magnetic phase unchanged for a few micrometers. However, when decoding, uncertainty creeps in - how many micrometers did we read? Does this correspond to 6 zeroes or 5? To prevent this problem, data is treated such that these long stretches of no transitions do not occur.</p>
+<p>If we see &lsquo;no transition,no transition,transition,transition&rsquo; on disk, we can be sure that this corresponds to &lsquo;0011&rsquo; - it is exceedingly unlikely that our reading process is so imprecise that this might correspond to &lsquo;00011&rsquo; or &lsquo;00111&rsquo;. So we need to insert spacers so as to prevent too little transitions. This is called &lsquo;Run Length Limiting&rsquo; on magnetic media.</p>
+<p>The thing to note is that sometimes, transitions need to be inserted to make sure that the data can be stored reliably. Introns may do much the same thing by making sure that the resulting code can be coiled properly.</p>
+<p>However, this area of molecular biology is a minefield! Huge diatribes rage about variants with exciting names like &lsquo;introns early&rsquo; or &lsquo;introns late&rsquo;, and massive words like &lsquo;folding propensity&rsquo; and &lsquo;stem-loop potential&rsquo;. I think it best to let this discussion rage on a bit.</p>
+<blockquote>
+<p>2013 Update: ten years on, the debate still hasn&rsquo;t settled! It is very clear that &lsquo;Junk DNA&rsquo; is a misnomer, but as to its immediate function, there is no consensus. Check out Fighting about ENCODE and junk for a discussion of where we stand.</p>
+<p>2021 Update: eighteen years on, the debate is nowhere close to being settled. It is now somewhat consensual that &lsquo;Junk DNA&rsquo; has important and diverse functions, but new discoveries are being made on a daily basis. <a href="https://www.advancedsciencenews.com/that-junk-dna-is-full-of-information/">https://www.advancedsciencenews.com/that-junk-dna-is-full-of-information/</a></p>
+</blockquote>
+<h2 id="fork-and-fork-bombs-tumors">fork() and fork bombs (&lsquo;tumors&rsquo;)</h2>
+<p>Like with Unix, cells are not &lsquo;spawned&rsquo; - they are forked. All cells started out from your ovum which has forked itself many times since. Like processes, both halves of the fork() are (mostly) identical to begin with, but they may from then on decide to do different things.</p>
+<p>As with Unix, great problems arise when cells keep on forking. They quickly exhaust resources, sometimes leading to death. This is called a tumor. The cell is riddled with &lsquo;ulimits&rsquo; and &lsquo;watchdogs&rsquo; to prevent this sort of thing from happening. The number of divisions is limited by <a href="https://en.wikipedia.org/wiki/Telomere#Shortening">Telomere shortening</a>, for example.</p>
+<p>A cell cannot clone unless very stringent conditions are met - a &lsquo;<a href="https://www.openbsd.org/">secure by default</a>&rsquo; configuration. It is only when these safeguards fail that tumors can grow. Like with computer security, it is hard to strike a balance between security (&lsquo;no cells can divide&rsquo;) and usability.</p>
+<p>Compare this to the well known <a href="https://www.youtube.com/watch?v=eqvBaj8UYz4">Halting Problem</a>, first described by the founder of Computer Science, <a href="https://www.turing.org.uk/index.html">Alan Turing</a>. Perhaps it is as impossible to predict if a program will ever finish as it is to create a functional genome that cannot get cancer?</p>
+<h2 id="mirroring-failover">Mirroring, failover</h2>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/helix.gif"
+         alt="Stretch of DNA."/> <figcaption>
+            <p>Stretch of DNA.</p>
+        </figcaption>
+</figure>
+
+</center>
+<p>Each DNA Helix is redundant in itself - you can see the genome as a twisted ladder whereby each spoke contains two bases - hence the word &lsquo;base-pair&rsquo;. If one of these bases is missing, it can be derived from the one on the other side. T always binds to A, C always to G. So, we can state that the genome is mirrored within the helix. &lsquo;RAID-1&rsquo; so to speak.</p>
+<p>Furthermore, there are two copies of each chromosome present - one from each parent, with the notable exception of the Y chromosome, which is only present in males. The actual details are complicated - but most genes are thus present twice. In case one is broken or unsuccessfully mutated, the other independent copy is still there. This is what we would normally call &lsquo;failover&rsquo;.</p>
+<h2 id="cluttered-apis-dependency-hell">Cluttered APIs, dependency hell</h2>
+<p>As proteins interact in the cell, they rely on each others&rsquo; characteristics. It has just been shown that <a href="https://www.nature.com/articles/srep44948">proteins that interact with a lot of other proteins cannot evolve</a>, or at least, only do so at a very slow rate.</p>
+<p>They propose that this is because of great internal dependencies which inhibit the changing of the &lsquo;contract&rsquo; of the protein. It is also noted that evolution does take place, but very slowly as both parts of the dependency need to evolve in a compatible way at the same time.</p>
+<h2 id="viruses-worms">Viruses, worms</h2>
+<p>Somebody recently proposed in a discussion that it would be really cool to hack the genome and compromise it so as to insert code that would copy itself to other genomes, using the host-body as its vehicle. &lsquo;Just like the <a href="https://en.wikipedia.org/wiki/Nimda">nimda worm</a>!&rsquo;</p>
+<p><em>He shortly thereafter realized that this is exactly what biological viruses have been doing for millions of years. And they are exceedingly good at it.
+A lot of these viruses have become a fixed part of our genome and hitch a ride with all of us. To do so, they have to hide from the virus scanner which tries to detect foreign code and prevent it from getting into the DNA.</em></p>
+<h2 id="the-central-dogma-c---o---aoutexe">The Central Dogma: .c -&gt; .o -&gt; a.out/.exe</h2>
+<p>When scientists were still discovering the basics of genetics they were faced with lots of different chemicals but the correlation was unclear. When it became clear what comes from what it was hailed as a great triumph and called &lsquo;The Central Dogma&rsquo;.</p>
+<p>This dogma tells us that DNA is used to make RNA and that RNA is used to make proteins, which is like saying that from a .c file comes a .o object file, which can be compiled into an executable (a.out/exe). It also tells us that this is the only order in which information flows.</p>
+<p>Now, the Central Dogma has <a href="https://en.wikipedia.org/wiki/Central_dogma_of_molecular_biology#Transfers_of_information_not_explicitly_covered_in_the_theory">recently been tarnished</a> somewhat. Like any billion year old coding project, a lot of hacking has been going on, and sometimes information flows the other way. Sometimes RNA patches the DNA and at other times, the DNA is modified by proteines created earlier.</p>
+<p>But generally, the dependencies are clear, so the Central Dogma remains important.</p>
+<h2 id="binary-patching-aka-gene-therapy">Binary patching aka &lsquo;Gene therapy&rsquo;</h2>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/genetherapy1big.gif"/> 
+</figure>
+
+</center>
+We can fiddle easily enough with DNA. There are companies to which you can send an ASCII file with DNA characters, and they will synthesize the corresponding 'output' for you. We can also splice DNA into developing animals and plants.
+<p>It is far harder to &lsquo;patch the running executable&rsquo;, as any programmer can attest. It is just like that with the genome. To change a running copy (&lsquo;a human&rsquo;), you need to edit each and every relevant copy of the gene you want to patch.</p>
+<p>For many years, medical science has tried to patch people with SCID, or &lsquo;Severe Combined Immunodeficiency&rsquo;, which is a very nasty disease which in effect disables the immune system - leading to very ill patients. It has been clear for quite a while now which letters in the DNA need to be fixed in order to cure these people.</p>
+<p>Many attempts where made to patch running people, using viruses that insert new DNA into living organisms, but this proved to be very hard. The genome is guarded far too well for such a simple approach to work - cells guard their code <a href="https://www.zdnet.com/article/windows-xp-source-code-leaked-online-on-4chan-out-of-all-places/">better than Microsoft</a>!</p>
+<p>However, recently the right virus was found which was able to breach the protection of the genome and fix the broken characters, leading to <a href="https://www.medicalnewstoday.com/articles/320018">apparently healthy people</a>.</p>
+<h2 id="bug-regression">Bug Regression</h2>
+<p>When fixing a bug in a computer program, we often introduce new bugs in the course of doing so. The genome is rife with this thing. A lot of African Americans are immune to Malaria but instead suffer from <a href="https://en.wikipedia.org/wiki/Sickle_cell_disease">sickle cell anemia</a>:</p>
+<blockquote>
+<p>In tropical regions of the world where the parasite-borne disease malaria is prevalent, people with a single copy of a particular genetic mutation have a survival advantage.
+(&hellip;)
+While inheriting one copy of the mutation confers a benefit, inheriting two copies is a tragedy. Children born with two copies of the genetic mutation have sickle cell anemia, a painful disease that affects the red blood cells.</p>
+<p><a href="https://books.google.pt/books?id=xBFNZCI3kd4C&amp;pg=RA3-PA17&amp;lpg=RA3-PA17&amp;dq=While+inheriting+one+copy+of+the+mutation+confers+a+benefit,+inheriting+two+copies+is+a+tragedy.+Children+born+with+two+copies+of+the+genetic+mutation&amp;source=bl&amp;ots=9LdQL5OKSx&amp;sig=ACfU3U13NQpobFuPP7fVuSf1E8ZO1eLhTA&amp;hl=pt-PT&amp;sa=X&amp;ved=2ahUKEwi1hZ6RlYvuAhVDxIUKHVvOCyoQ6AEwAHoECAEQAg#v=onepage&amp;q=While%20inheriting%20one%20copy%20of%20the%20mutation%20confers%20a%20benefit%2C%20inheriting%20two%20copies%20is%20a%20tragedy.%20Children%20born%20with%20two%20copies%20of%20the%20genetic%20mutation&amp;f=false">Link to quote</a></p>
+</blockquote>
+<p>There are quite a few examples of this happening. See also the wonderful book <a href="https://www.amazon.com/exec/obidos/ASIN/0060932902">&lsquo;Genome&rsquo; by Matt Ridley.</a></p>
+<h2 id="reed-solomon-codeshttpsbooksgoogleptbookshlpt-ptlridyws55rx1orec-forward-error-correction"><a href="https://books.google.pt/books?hl=pt-PT&amp;lr=&amp;id=yws55Rx1orEC">Reed-Solomon codes</a>: &lsquo;Forward Error Correction&rsquo;</h2>
+<p>Like computer storage, DNA (and its intermediate &lsquo;RNA&rsquo;) can get corrupted. To protect against common &lsquo;single bit errors&rsquo;, the encoding from individual DNA letters to proteins is degenerate. There are 4 RNA characters, U, C, G and A - in other words, a &lsquo;byte&rsquo; is 2 bits long. Three characters correspond to an amino acid.</p>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/nucleotides.jpg"/> 
+</figure>
+
+</center>
+<p>6 bits could conceivably map to 64 amino acids, yet there are only 20 in use. For example, UCU, UCC, UCA and UCG all encode for &lsquo;Serine&rsquo;, whereas only UGG maps to &lsquo;Tryptophan&rsquo;.
+Now, it turns out that some likely &lsquo;typos&rsquo; (UCU -&gt; UCC) in the encoding lead to an identical amino acid being expressed. For more about this fascinating phenomenon, read <a href="https://www.amazon.com/exec/obidos/ASIN/0465045669">&lsquo;Metamagical Themas&rsquo; by Douglas Hofstadter</a>.</p>
+<h2 id="holy-code--you-are-not-expected-to-understand-thishttpswebarchiveorgweb20080101101354httpcmbell-labscomcmcswhodmroddhtml-">Holy Code: /* <a href="https://web.archive.org/web/20080101101354/http://cm.bell-labs.com/cm/cs/who/dmr/odd.html">You are not expected to understand this</a>. */</h2>
+<p><a href="https://www.reddit.com/r/ProgrammerHumor/comments/a482un/the_base_code_is_sacred_and_cannot_be_questioned/">Some code is sacred</a>. We may not remember who wrote it, or why - we just know that it works. The guy who thought it up may have left the company already. Such code is not to be tinkered with.</p>
+<p>DNA knows the concept of the &lsquo;molecular clock&rsquo;. Some parts of the genome are actively changing and some parts are sacrosanct. A good example of the latter are the Histone genes H3 and H4.</p>
+<p>These genes are fundamental to the actual storage of the genome and are thus of paramount importance. Any failure in this code rapidly leads to a non-functioning organism.</p>
+<p>So it is to be expected that this code isn&rsquo;t tinkered with and that turns out the case. The H3 an H4 genes have a <em>zero</em> effective mutation rate in humans. But it goes far beyond that. You share almost the exact same code with anything from chickens to grass or molds.</p>
+<table><tr><td width=10%></td><td width=75%>
+RATES OF NUCLEOTIDE SUBSTITUTION PER SITE PER <b>1000 MILLION YEARS</b> BETWEEN
+VARIOUS HUMAN AND RODENT PROTEINS-CODING GENES WITH DIVERGENCE SET AT
+80 MILLION YEARS BASED ON FOSSIL EVIDENCE:<p>
+<table border=1 width=100%><tr><td>gene</td><td>Number of codons</td><td>Effective rate</td>
+<tr><td>histone 3</td><td>135</td><td>0.00</td>
+<tr><td>histone 4</td><td>101</td><td>0.00</td>
+<tr><td>insulin</td><td>51</td><td>0.13</td>
+<tr><td>gamma interferon</td><td>136</td><td>2.79</td>
+</table>
+</td><td width=15%></td><tr><td></td>
+<td>
+<p>
+<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC117386/">Source</a>
+</td></table>
+<p>Now, it does appear that there are two ways the genome can make sure that code does not mutate. The first way is described above: use amino acids that are highly degenerate and making sure that those typos that DO occur result in the same output.</p>
+<p>Furthermore, genes can be copied earlier or later in the cell&rsquo;s reproductive process, leading to more or less favorable copying conditions. Many more of such conditions apply.</p>
+<p>It appears as if H3 and H4 were authored very carefully as they do have a lot of &lsquo;synonymous changes&rsquo;, which through the clever techniques described above do not lead to changes in the output.</p>
+<h2 id="framing-errors-start-and-stop-bits">Framing errors: start and stop bits</h2>
+<p><code>...0 0000 0001   0000 0010  0000 0011 0...</code></p>
+<p>This clearly describes the 8 bit values 1, 2 and 3. The spaces I added make it clear where a byte starts and stops. Many serial devices employ stop and start bits to encode where you start reading. If we shift this sequence slightly:</p>
+<p><code>...00 0000 0010   000 00100  000 00110 ...</code></p>
+<p>It suddenly reads 2, 4, 6! To prevent this from happening in DNA there are elaborate signals that tell the cell where to start reading. Interestingly, there are pieces of genome that can be read from multiple starting points, and produce useful (but different) results either way. That is what I call a cool hack!</p>
+<p>Each way a strand of DNA can be read is called an <a href="http://bioweb.uwlax.edu/GenWeb/Molecular/Seq_Anal/Translation/translation.html">Open Reading Frame</a> and there are generally 6, 3 each way.</p>
+<h2 id="massive-multiprocessing-each-cell-is-a-universe">Massive multiprocessing: each cell is a universe</h2>
+<p>Now, DNA is not like a computer programming language. It really isn&rsquo;t. But there are some whopping analogies. We can view each cell as a CPU, running its own kernel. Each cell has a copy of the entire kernel, but choses to activate only the relevant parts. Which modules or drivers it loads, so to speak.</p>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/cell.jpg"
+         alt="A cell"/> <figcaption>
+            <p>A cell</p>
+        </figcaption>
+</figure>
+
+</center>
+<p>If a cell needs to do something (&lsquo;call a function&rsquo;), it whips up the right piece of the genome and transcribes it into RNA. The RNA is then translated into a sequence of amino acids, which together make up a protein the DNA coded for. Now for the really cool bit :-)</p>
+<p>This protein is tagged with a shipping address. This is a marker consisting of several amino acids which tell the rest of the cell where this protein needs to go. There is machinery which acts on these instructions, and delivers the protein, which is potentially on the outside of the cell.</p>
+<p>The delivery instruction is then stripped off and several post processing steps may be performed, possibly activating the protein - which is good, because you may not want to transport an active protein through places where it should not do work.</p>
+<h2 id="self-hosting--bootstrapping">Self hosting &amp; bootstrapping</h2>
+<p>If we were to destroy all existing C compilers on the planet and leave only the code for one, we would be in great trouble. Yes, we have the C code to a C compiler, but we need a C compiler to compile it!</p>
+<p>In actual fact, this was solved by not writing the first C compiler in C (duh), but in a language that was available already: B. See <a href="https://web.archive.org/web/20080113133738/cm.bell-labs.com/cm/cs/who/dmr/chist.html">here</a> for details about &lsquo;bootstrapping&rsquo;.</p>
+<p>The same holds for the genome. To create a new &lsquo;binary&rsquo; of a specimen, a <em>living</em> copy is required. The genome needs an elaborate toolchain in order to deliver a living thing. The code itself is impotent. This toolchain is commonly called &lsquo;your parents&rsquo;.</p>
+<p>Update: Recently, it has become possible to &lsquo;bootstrap&rsquo; life with very little actually living source material. The dictum &ldquo;every cell comes from a cell&rdquo; is becoming less true. See for example Mycoplasma laboratory.</p>
+<p>It appears that RNA, which is an intermediate code between DNA and a protein, may have been the &lsquo;B&rsquo; for DNA. Which begs the question where RNA came from. It is very interesting to note that extra-terrestrial objects often contain amino acids! See <a href="http://www.google.com/search?hl=en&amp;q=amino+acids+meteorites">http://www.google.com/search?hl=en&amp;q=amino+acids+meteorites</a></p>
+<h2 id="the-makefile">The Makefile</h2>
+<center>
+<figure>
+    <img src="/articles/amazing-dna/homeobox.gif"/> 
+</figure>
+
+</center>
+Organisms typically start out as a single cell, which as said before contains two entire copies of the genome. The big tarfile so to speak, with all files extracted, ready to go. Now what?
+<p>Enter the Homeobox genes. Cells must be copied and assigned a purpose. The Homeobox genes start out by laying a &lsquo;top to bottom&rsquo; dependency which reads &lsquo;start with the head&rsquo;. In order to make this happen, a chemical gradient is created by which cells can sense where they are, and decide if they need to do things useful for building a head, or for building a primordial notochord.</p>
+<p>Only discovered in 1983, the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2561923/">Homeobox genes</a> are a very exciting area of research right now. It is interesting to note that like a Makefile, &lsquo;HOX&rsquo; genes only trigger things in other genes and don&rsquo;t materially build things themselves.</p>
+<p>The homeobox &lsquo;syntax&rsquo; appears to be very &lsquo;holy&rsquo; in the sense described above. What happens if you copy paste the &lsquo;legs selector&rsquo; part of a mouse HOX gene into the fruit fly Homeobox:</p>
+<blockquote>
+<p>&ldquo;In fact, when the mouse Hox-B6 gene is inserted in Drosophila, it can substitute for Antennapedia and produce legs in place of antennae&rdquo;</p>
+<p><a href="https://biology-pages.info/H/HomeoboxGenes.html">https://biology-pages.info/H/HomeoboxGenes.html</a></p>
+</blockquote>
+<p>The fruitfly and human genomes did not branch just millions of years ago but <strong>hundreds of millions of years ago</strong>. And you can copy paste parts (&lsquo;Selectors&rsquo; in the genetic language) of the Makefile and it still clicks. Please note that the &lsquo;build a leg&rsquo; routine in a fruit fly is of course radically different from that in a mouse, but the &lsquo;selector&rsquo; correctly triggers the right instructions.</p>
+<h2 id="plugins-plasmids">Plugins: Plasmids</h2>
+<p>All living organisms have DNA, sometimes organized into multiple chromosomes (&lsquo;libraries&rsquo;), sometimes in only one, typically circular in that case. This goes for most bacteria. Next to this large main genome, such bacteria frequently also host &lsquo;plasmids&rsquo;: tiny circles of DNA with specific functions.</p>
+<p>Such plasmids are somewhat portable between species, and through a variety of mechanisms they do indeed get transferred horizontally. By this way even non-identical bacteria can &lsquo;learn&rsquo; antibiotic resistance from each other, for example.</p>
+<p>Compared to the programming world, a plasmid is not voluntary, and is like LD_PRELOADing a .so or the equivalent on other platforms. And in fact, plasmids are frequently injected for research purposes. They can easily be injected in all kinds of bacteria, and immediately get to work.</p>
+<p>Plasmids copy themselves independently from the main chromosome, and are thus a permanent fixture of bacteria. To make this happen, a plasmid features the magnificently named <strong>'<a href="https://en.wikipedia.org/wiki/Origin_of_replication">Origin of Replication</a>'</strong> gene which gets triggered when the cell wants to divide.</p>
+<h2 id="further-reading">Further reading</h2>
+<p><strong><a href="https://www.amazon.com/exec/obidos/ASIN/0060932902">Genome</a> by Matt Ridley</strong></p>
+<p>An amazing account of an effect each chromosome has on our lives. Very readable yet strict in not &lsquo;dumbing down&rsquo; the theory. Contains an impressive set of references.
+Source of many of the more impressive examples found on this page.
+And to help Matt along in the quest he clearly sets out in his book, I would like to state quite clearly:
+<strong>Genes are not there to cause diseases</strong></p>
+<p><strong><a href="https://www.amazon.com/exec/obidos/ASIN/0471330612">Human Molecular Genetics, second edition</a> by Tom Strachan and Andrew P. Read</strong></p>
+<p>Neatly fills the gap between &lsquo;primary literature&rsquo; (ie, peer reviewed academic magazines and papers) and introductory textbooks. I&rsquo;m literally dragging myself through this book, constantly looking things up in order to understand everything. If you really want to know the details about introns, exons, RNA in all its variants, how genes cause and prevent diseases, this is the book.</p>
+<p><strong><a href="https://www.amazon.com/exec/obidos/ASIN/0192860925">The Selfish Gene</a> by Richard Dawkins</strong></p>
+<p><a href="https://en.wikipedia.org/wiki/Richard_Dawkins">Richard Dawkins</a> is the <a href="https://en.wikipedia.org/wiki/W._Richard_Stevens">Richard Stevens</a> of evolution theory. Both have contributed practical work but are most famous for their crystal clear expositions of existing theory, opening up the world they describe to an audience of millions.</p>
+<p><strong><a href="https://www.amazon.com/exec/obidos/ASIN/0393315703">The Blind Watchmaker : Why the Evidence of Evolution Reveals a Universe Without Design</a> by Richard Dawkins</strong></p>
+<p>Again a book by Dawkins. More about evolution than about genes but clearly explains how evolution can be responsible for the intricate design found in many living things.
+Again very readable and fascinating on every level.</p>
+<p><strong><a href="https://www.amazon.com/exec/obidos/ASIN/0465045669">Metamagical Themas</a> by Douglas Hofstadter</strong></p>
+<p>This is an &lsquo;idea&rsquo; book. It is filled to the brim with ideas, they simply ooze out of the pages. Many of these ideas are about information theory, genetics, life, intelligence, music, mathematics and people.
+Clearly not a genetic textbook but has been influential in imbuing enthusiasm for all things genetic in many people. Can often be found dirt cheap in second hand bookstores.
+Recommended.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/articles/posts/reverzni-in%C5%BEeniring-izvorne-kode-cepiva-biontech-pfizer-proti-sars-cov-2/'>
+        <span aria-hidden='true'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Reverzni inženiring izvorne kode cepiva BioNTech/Pfizer proti SARS-CoV-2</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/articles/posts/naliza-izvornog-k%C3%B4da-vakcine-biontech-pfizer-sars-cov-2/'>
+        <span class='screen-reader-text'>Next post: </span>Analiza izvornog kôda vakcine BioNTech-Pfizer SARS-CoV-2<span aria-hidden='true'>Next <svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/ahuPowerDNS' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/PowerDNS_Bert' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <title>Twitter icon</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:bert@hubertnet.nl' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/bert-hubert-b05452' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2014-2021 bert hubert </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/articles/assets/js/"</script>
+
+<script src='/articles/assets/js/main.c3bcf2df.js'></script>
+
+</body>
+
+</html>
