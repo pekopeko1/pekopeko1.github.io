@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>史書ジェネレーター</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+</head>
+
+<body class="bg-stone-100 text-stone-800 min-h-screen p-8 relative">
+
+    <!-- Start Screen -->
+    <div id="startScreen" class="fixed inset-0 bg-stone-900 flex items-center justify-center z-[100]">
+        <div class="bg-white p-10 rounded-lg shadow-2xl text-center max-w-lg w-full">
+            <h1 class="text-3xl font-bold mb-8 text-stone-800">Historical Chronicle Generator</h1>
+            <div class="flex flex-col gap-4">
+                <button id="newGameBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded shadow transition text-lg">開始</button>
+                <div class="relative mt-2 border-t pt-6">
+                    <p class="text-sm text-stone-500 mb-2">または以前の歴史を再開する</p>
+                    <input type="file" id="loadGameInput" accept=".sqlite" class="hidden">
+                    <button id="loadGameBtn" class="w-full bg-stone-600 hover:bg-stone-700 text-white font-bold py-3 px-6 rounded shadow transition">セーブデータ読込 (.sqlite)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainApp" class="max-w-6xl mx-auto hidden">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-stone-900 mb-2">史書ジェネレーター</h1>
+            <p class="text-stone-600">架空の歴史を自動生成・編纂する</p>
+        </header>
+
+        <!-- Controls -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <div class="flex flex-wrap gap-4 items-end">
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">時代設定</label>
+                    <select id="era" class="border border-stone-300 rounded px-3 py-2 w-40">
+                        <option value="ancient_china">古代中国風</option>
+                        <option value="medieval_europe">中世欧州風</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">開始年</label>
+                    <input type="number" id="startYear" value="128" min="1" max="9999"
+                        class="border border-stone-300 rounded px-3 py-2 w-24">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">期間 (年)</label>
+                    <input type="number" id="years" value="30" min="10" max="300"
+                        class="border border-stone-300 rounded px-3 py-2 w-24">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">初期国家数</label>
+                    <input type="number" id="nations" value="3" min="2" max="10"
+                        class="border border-stone-300 rounded px-3 py-2 w-24">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">領土数 (15-30)</label>
+                    <input type="number" id="territories" placeholder="ランダム" min="15" max="30"
+                        class="border border-stone-300 rounded px-3 py-2 w-24">
+                </div>
+                <div class="flex-grow"></div>
+
+                <button id="generateBtn"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                    歴史生成
+                </button>
+                <button id="settingsBtn"
+                    class="bg-stone-500 hover:bg-stone-600 text-white font-bold py-2 px-4 rounded shadow transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </button>
+                <button id="peopleBtn"
+                    class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-6 rounded shadow transition hidden">
+                    人物列伝
+                </button>
+                <button id="saveBtn"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded shadow transition hidden">
+                    セーブ
+                </button>
+                <div id="continueControls" class="hidden flex items-end gap-2">
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">追加期間 (年)</label>
+                        <input type="number" id="continueYears" value="30" min="10" max="300"
+                            class="border border-stone-300 rounded px-3 py-2 w-24">
+                    </div>
+                    <button id="continueBtn"
+                        class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded shadow transition">
+                        継続生成
+                    </button>
+                </div>
+            </div>
+            <div id="statusMsg" class="mt-4 text-sm font-medium text-gray-600"></div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Left: World State -->
+            <div class="lg:col-span-1 space-y-8">
+                <!-- Nations -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2">国家一覧</h2>
+                    <div id="nationList" class="space-y-2">
+                        <p class="text-gray-400 text-sm">生成待ち...</p>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2">大陸情勢図</h2>
+                    <div id="mapContainer" class="relative w-full aspect-square bg-stone-100 rounded-lg overflow-hidden border border-stone-200">
+                        <canvas id="mapCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                        <div id="territoryMarkers" class="absolute inset-0 pointer-events-none"></div>
+                    </div>
+                    <div id="territoryList" class="hidden"></div>
+                </div>
+            </div>
+
+            <!-- Right: History Log -->
+            <div class="lg:col-span-2">
+                <div class="bg-white p-6 rounded-lg shadow-md h-full">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2">歴史年表</h2>
+                    <div id="historyLog" class="space-y-4 max-h-[800px] overflow-y-auto pr-2">
+                        <p class="text-gray-400">生成ボタンを押して歴史を紡ぎましょう。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- People Modal -->
+    <div id="peopleModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-4xl max-h-[90vh] flex flex-col">
+            <div class="p-6 border-b border-stone-200 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-stone-800">人物列伝</h2>
+                <button id="closePeopleModal" class="text-stone-500 hover:text-stone-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-grow bg-stone-50">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-stone-200">
+                        <thead class="bg-stone-100 border-b border-stone-200">
+                            <tr>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="name">名前</th>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="role">身分</th>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="rank">階級</th>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="nation">所属</th>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="birth">生年</th>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="death">没年</th>
+                                <th class="py-2 px-4 text-left cursor-pointer hover:bg-stone-200" data-sort="parent">親</th>
+                            </tr>
+                        </thead>
+                        <tbody id="peopleList" class="divide-y divide-stone-200">
+                            <!-- People rows will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-[70]">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-3xl max-h-[90vh] flex flex-col">
+            <div class="p-6 border-b border-stone-200 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-stone-800">シミュレーション設定</h2>
+                <button id="closeSettingsModal" class="text-stone-500 hover:text-stone-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-grow bg-stone-50">
+                <div class="space-y-8">
+                    <!-- 人口動態 -->
+                    <section>
+                        <h3 class="text-lg font-bold text-indigo-700 mb-4 border-b border-indigo-200 pb-1">人口動態</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">出生率 (0-10%)</label>
+                                <input type="range" id="config-birthRate" min="0" max="0.1" step="0.001" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-birthRate">2.0%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">自然死基礎確率 (0-1%)</label>
+                                <input type="range" id="config-deathBaseProb" min="0" max="0.01" step="0.0001" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-deathBaseProb">0.2%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">老衰開始年齢 (40-100歳)</label>
+                                <input type="number" id="config-deathAgeThreshold" min="40" max="100" class="border border-stone-300 rounded px-2 py-1 w-full">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">疫病発生率 (0-20%)</label>
+                                <input type="range" id="config-plagueChance" min="0" max="0.2" step="0.01" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-plagueChance">5%</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 政治・事件 -->
+                    <section>
+                        <h3 class="text-lg font-bold text-emerald-700 mb-4 border-b border-emerald-200 pb-1">政治・事件</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">農民蜂起確率 (0-20%)</label>
+                                <input type="range" id="config-rebellionChance" min="0" max="0.2" step="0.01" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-rebellionChance">5%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">武将簒奪確率 (0-30%)</label>
+                                <input type="range" id="config-usurpationChance" min="0" max="0.3" step="0.01" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-usurpationChance">10%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">暗殺確率 (0-2%)</label>
+                                <input type="range" id="config-assassinationChance" min="0" max="0.02" step="0.001" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-assassinationChance">0.2%</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 国家運営・外交 -->
+                    <section>
+                        <h3 class="text-lg font-bold text-amber-700 mb-4 border-b border-amber-200 pb-1">国家運営・外交</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">在野登用率 (0-20%)</label>
+                                <input type="range" id="config-recruitmentRate" min="0" max="0.2" step="0.01" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-recruitmentRate">6%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">武将昇進率 (0-20%)</label>
+                                <input type="range" id="config-promotionRate" min="0" max="0.2" step="0.01" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-promotionRate">10%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">養子縁組率 (0-20%)</label>
+                                <input type="range" id="config-adoptionRate" min="0" max="0.2" step="0.01" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-adoptionRate">5%</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-1">基底宣戦布告率 (0-100%)</label>
+                                <input type="range" id="config-warDeclarationChance" min="0" max="1.0" step="0.05" class="w-full">
+                                <div class="text-right text-xs text-stone-500 mt-1" id="val-warDeclarationChance">40%</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="p-6 border-t border-stone-200 bg-white flex justify-between">
+                <button id="restoreDefaultsBtn" class="text-stone-600 hover:text-stone-900 text-sm font-medium">
+                    デフォルトに戻す
+                </button>
+                <button id="saveSettingsBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-8 rounded shadow transition">
+                    設定を保存
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail History Modal (for Nation and Person) -->
+    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-[60]">
+        <div class="bg-white rounded-lg shadow-xl w-11/12 max-w-2xl max-h-[90vh] flex flex-col">
+            <div class="p-6 border-b border-stone-200 flex justify-between items-center">
+                <h2 id="detailModalTitle" class="text-2xl font-bold text-stone-800">詳細年表</h2>
+                <button id="closeDetailModal" class="text-stone-500 hover:text-stone-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="detailModalHeader" class="px-6 py-4 bg-stone-100 border-b border-stone-200 hidden">
+                <!-- Person info will be here -->
+            </div>
+            <div class="p-6 overflow-y-auto flex-grow bg-stone-50">
+                <div id="detailHistoryLog" class="space-y-4">
+                    <!-- Detailed history events will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+</body>
+
+</html>
