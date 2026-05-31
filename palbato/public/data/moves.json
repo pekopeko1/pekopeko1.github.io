@@ -1,0 +1,122 @@
+[
+  {
+    "id": "tackle",
+    "name": "たいあたり",
+    "type": "NORMAL",
+    "category": "PHYSICAL",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 35,
+    "description": "からだを　ぶつけて　あいてを　こうげきする。"
+  },
+  {
+    "id": "ember",
+    "name": "ひのこ",
+    "type": "FIRE",
+    "category": "SPECIAL",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 25,
+    "description": "ちいさな　ひのこで　あいてを　こうげきする。　やけどに　させることが　ある。"
+  },
+  {
+    "id": "bubble",
+    "name": "あわ",
+    "type": "WATER",
+    "category": "SPECIAL",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "description": "おおくの　あわを　ふきだして　こうげきする。　すばやさを　さげることが　ある。"
+  },
+  {
+    "id": "vine_whip",
+    "name": "つるのムチ",
+    "type": "GRASS",
+    "category": "PHYSICAL",
+    "power": 45,
+    "accuracy": 100,
+    "pp": 25,
+    "description": "ほそい　つるを　ムチのように　しならせて　あいてを　こうげきする。"
+  },
+  {
+    "id": "dragon_rush",
+    "name": "ドラゴンダイブ",
+    "type": "DRAGON",
+    "category": "PHYSICAL",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 10,
+    "description": "ものすごい　いあつかんを　はなちながら　あいてに　とっしんする。あいてを　ひるませることも　ある。"
+  },
+  {
+    "id": "heal_block",
+    "name": "かいふくふうじ",
+    "type": "PSYCHIC",
+    "category": "STATUS",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "description": "５ターンの　あいだ　あいての　じぶんを　かいふくさせる　わざを　ふうじる。"
+  },
+  {
+    "id": "dragon_pulse",
+    "name": "りゅうのはどう",
+    "type": "DRAGON",
+    "category": "SPECIAL",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 10,
+    "description": "くちから　しょうげきはを　はきだして　あいてを　こうげきする。"
+  },
+  {
+    "id": "moonblast",
+    "name": "ムーンフォース",
+    "type": "FAIRY",
+    "category": "SPECIAL",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "description": "つきの　ちからを　かりて　あいてを　こうげきする。あいての　とくこうを　さげることが　ある。"
+  },
+  {
+    "id": "nihil_light",
+    "name": "無に帰す光",
+    "type": "FAIRY",
+    "category": "SPECIAL",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 5,
+    "description": "すべてを　むに　きす　まばゆい　ひかりで　あいてを　こうげきする。"
+  },
+  {
+    "id": "rest",
+    "name": "ねむる",
+    "type": "PSYCHIC",
+    "category": "STATUS",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "description": "２ターンの　あいだ　ねむって　じぶんの　ＨＰと　じょうたいじょうを　すべて　かいふくする。"
+  },
+  {
+    "id": "amnesia",
+    "name": "どわすれ",
+    "type": "PSYCHIC",
+    "category": "STATUS",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "description": "いっしゅん　なにかを　わすれることで　じぶんの　とくぼうを　ぐーんと　あげる。"
+  },
+  {
+    "id": "swords_dance",
+    "name": "つるぎのまい",
+    "type": "NORMAL",
+    "category": "STATUS",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "description": "たたかいの　きもちを　たかめる　おどりを　おどって　じぶんの　こうげきを　ぐーんと　あげる。"
+  }
+]
