@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>源平盛衰記 〜血戦源義経〜</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; background: #1a1a1a; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; }
+        header { background: #333; padding: 0.5rem; text-align: center; border-bottom: 1px solid #444; }
+        main { flex: 1; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 5px; padding: 5px; overflow: hidden; }
+        @media (max-width: 900px) { main { grid-template-columns: 1fr; overflow-y: auto; } }
+        .pane { background: #262626; border: 1px solid #444; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        #map-area { position: relative; }
+        .territory-node { position: absolute; width: 80px; height: 60px; background: #404040; border: 2px solid #666; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; font-size: 0.75rem; }
+        .territory-node:hover { border-color: #f59e0b; }
+        svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .status-panel { background-color: #2d2d2d; padding: 10px; border-radius: 8px; }
+        .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .log-area { flex: 1; background: #000; color: #0f0; font-family: monospace; padding: 10px; font-size: 0.8rem; border-radius: 4px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <header><h1>源平盛衰記 〜血戦源義経〜</h1></header>
+    <main>
+        <section id="map-area" class="pane"><div class="placeholder-box">地図エリア</div></section>
+        <aside class="pane">
+            <h3>武将一覧
+                <select id="sort-select" style="font-size: 0.7rem;">
+                    <option value="name">名前順</option>
+                    <option value="combat">戦闘力順</option>
+                    <option value="command">統率力順</option>
+                </select>
+            </h3>
+            <div id="general-list"></div>
+        </aside>
+        <aside class="pane">
+            <div class="status-panel">
+                <h3>情報</h3>
+                <p id="turn-info">ターン: 準備中</p>
+                <p id="phase-info">フェイズ: -</p>
+                <div style="display:flex; gap:10px;">
+                    <span class="badge" style="background:#3b82f6">源氏: <span id="genji-vp">0</span> VP</span>
+                    <span class="badge" style="background:#ef4444">平氏: <span id="heishi-vp">0</span> VP</span>
+                </div>
+            </div>
+            <h3>操作ログ</h3>
+            <div id="log-area" class="log-area"></div>
+        </aside>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
